@@ -1,0 +1,28 @@
+<div class="reserve-show-container">
+  <div  class="reserve-show-main">
+    <table>
+       <tr>
+         <th>予約した部屋</th>
+         <td> 
+            <%= @reserve.inn.innName %>
+         </td>
+       </tr>
+       <tr>
+           <th>開始日</th>
+           <td><%= @reserve.start_date %></td>
+       </tr>
+       <tr>
+           <th>終了日</th>
+           <td><%= @reserve.end_date %></td>
+       </tr>
+       <tr>
+           <th>価格</th>
+           <td>¥<%= @reserve.price_sum %></td>
+       </tr>
+    </table>
+  </div>
+</div>
+
+
+
+ 

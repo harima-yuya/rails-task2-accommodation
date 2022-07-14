@@ -1,0 +1,22 @@
+<div class="layout1-container account-container">
+    <div class="layout1-top account-top">
+        <div class=layout1-page-link>
+           <a href="/users/account"><span class="current-page">アカウント</span></a>
+           <a href="/users/profile"><span>プロフィール</span></a>
+        </div>
+    </div>
+    <div class="layout1-main account-main">
+          <h3>アカウント</h3>
+          <div class="layout1-item account-item">
+              <strong>メールアドレス</strong><br>
+              <%= current_user.email%>
+          </div>
+          <div class="layout1-item account-item">
+              <strong>パスワード</strong><br>
+              <p>*********</p>
+           </div>
+           <div class="layout1-item account-item">
+              <div class="btn"><a href="/users/edit">編集</a></div>
+           </div>
+    </div>
+</div>

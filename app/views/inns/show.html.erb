@@ -1,0 +1,56 @@
+<div class="inns-show-container">
+   <div class="inns-show-detail">
+      <span><%= image_tag @inn.innImage.url  ,class:"detail-image" %></span>
+      <span><%= image_tag @inn.user.image.url ,class:"profile-image detail-profile-image" %></span>
+      <span  class="detail-name"><%= @inn.innName %></span>
+      <span  class="detail-area"><%= @inn.innArea %></span>
+      <span class="detail-memo" ><%= @inn.innMemo %></span>
+   </div>
+
+   <div class="reserve-form-container">
+      <%= form_for @reserve, method: :post, url: reserves_confirm_path do |form| %> 
+          <div  style="display:none"><%= form.text_field :inn_id %></div>
+          ¥<span id="price"><%= @inn.innPrice  %> </span>/ 日<br>
+          <label for="start_date">開始日</label>
+          <%= form.date_field :start_date, id:"start_date" %>  
+          <label for="end_date"">終了日</label> 
+          <%= form.date_field :end_date, id:"end_date" %>
+          <label for="guest_num">人数</label>
+          <%= form.number_field :guest_num, id:"guest_num" %>
+          <label for="price_sum">合計金額</label>
+          <%= form.number_field :price_sum ,id:"price_sum", :readonly => true %>円
+          <%= form.submit '予約する' , class:"btn reserve-form-btn" %>
+       <% end %>
+    </div>
+</div>
+
+
+<script>
+/*終了日ー開始日から滞在日数を計算。滞在日数と人数、金額/日から合計金額を計算。*/
+function calculate_price_sum(){
+   let price =  document.getElementById("price").textContent;
+   let guest_num =  document.getElementById("guest_num").value;
+   let start_date = document.getElementById("start_date").value;
+   let end_date = document.getElementById("end_date").value;
+   let day1 = new Date(start_date);
+   let day2 = new Date(end_date);
+   let stay_days =  (day2 - day1)/86400000;
+   let price_sum = price * guest_num * stay_days;
+   document.getElementById("price_sum").value = price_sum;
+};
+
+/*開始日、終了日、人数のいずれかが変更された時に合計金額を再計算*/
+document.getElementById("guest_num").onchange = function calculate_price_sum_by_guest_num() {
+   calculate_price_sum();
+   };
+
+document.getElementById("start_date").onchange = function stay_days_and_price_sum1() {
+   calculate_price_sum();
+};
+
+document.getElementById("end_date").onchange = function stay_days_and_price_sums2() {
+    calculate_price_sum();
+  
+};
+
+</script>

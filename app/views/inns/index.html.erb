@@ -1,0 +1,24 @@
+<div class="index-top">
+    <div class="index-top-search-area">
+       <p>Potepan Shareでまだ体験したことのない旅をしよう</p>
+       <%= search_form_for @search, url: inns_search_path do |f| %>
+          <%= f.label :innArea_cont, 'エリア' ,{class:"index-top-search-label"} %><br>
+          <%= f.search_field :innArea_cont, {class:"index-top-search-form form"} %><br>
+          <%= f.submit "探す", {class:"index-top-search-btn btn"} %>
+        <% end %>
+    </div>
+</div>
+    
+<div class="index-bottom">
+    <div class="recomnd-area-text"><h2>おすすめエリア</h2></div>
+    <div class="recomnd-area-imgs">
+       <div class="recomnd-area-imgs-top">
+          <a href="/inns/search?q%5BinnArea_cont%5D=東京&commit=探す" class="recomnd-area-img-item recomnd-area-item1"><h3>東京</h3><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg" alt="東京"></a>
+          <a href="/inns/search?q%5BinnArea_cont%5D=大阪&commit=探す" class="recomnd-area-img-item recomnd-area-iem2"><h3>大阪</h3><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg" alt="大阪"></a>
+       </div>
+       <div class="recomnd-area-imgs-bottom">
+          <a href="/inns/search?q%5BinnArea_cont%5D=京都&commit=探す" class="recomnd-area-img-item recomnd-area-item3"><h3>京都</h3><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg" alt="京都"></a>
+          <a href="/inns/search?q%5BinnArea_cont%5D=札幌&commit=探す" class="recomnd-area-img-item recomnd-area-item4"><h3>札幌</h3><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg" alt="札幌"></a>
+       </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="layout3-container registarated-room-container">
+<h2>登録済みルーム一覧</h2>
+    <table>
+        <tr>
+            <th>ルーム画像</th><th>ルーム名</th><th>ルーム紹介</th><th>料金</th><th>作成日</th>
+        </tr>
+        <% @inns.each do |obj| %>
+            <tr class="layout3-list registarated-list">
+                <td><%= image_tag obj.innImage.url , class:"layout3-iamgge registarated-room-image"%></td>
+                <td ><a class="layout3-name registarated-room-name", href="/inns/<%= obj.id %>"><%= obj.innName %></a></td>
+                <td><%= obj.innMemo %></td>
+                <td>¥<%= obj.innPrice %></td>
+                <td><%= obj.created_at %></td>
+            </tr>   
+        <% end %>
+    </table>
