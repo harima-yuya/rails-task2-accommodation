@@ -1,4 +1,5 @@
 class ReservesController < ApplicationController
+  before_action :authenticate_user!
   before_action :reserve_params, except: [:add, :index, :show]
 
   def index
@@ -10,7 +11,7 @@ class ReservesController < ApplicationController
     @reserve = Reserve.find(params[:id])
   end
 
-  def add
+  def new
     @reserve = Reserve.new
   end
 

@@ -11,7 +11,7 @@
        <div class="layout1-item profile-item profile-item-image">
            <%= image_tag @user.image.url ,class:"profile-image" %>
        </div>
-        <%= form_for(@user, url:{controller:"users", action:"update"}) do |f| %>
+        <%= form_with model:@user, url:{controller:"users", action:"update"} do |f| %>
              <table>
                 <tr>
                     <th><%= f.label :アイコン画像 %></th>

@@ -8,7 +8,7 @@
    </div>
 
    <div class="reserve-form-container">
-      <%= form_for @reserve, method: :post, url: reserves_confirm_path do |form| %> 
+      <%= form_with model:@reserve, url: reserves_confirm_path do |form| %> 
           <div  style="display:none"><%= form.text_field :inn_id %></div>
           ¥<span id="price"><%= @inn.innPrice  %> </span>/ 日<br>
           <label for="start_date">開始日</label>

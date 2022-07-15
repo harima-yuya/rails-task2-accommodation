@@ -14,7 +14,7 @@
 
  <body>
     <header>
-      <a href="/inns"><img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" alt="logo"></a>
+      <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" ), "/inns" %>
       <%= search_form_for @search, class:"header-search", url: inns_search_path do |f| %>
          <div class="header-search-form-area"><%= f.search_field :innArea_cont ,placeholder:"エリア" %></div>
          <div class="header-search-form-name"><%= f.search_field :innName_cont ,placeholder:"キーワード" %></div>
@@ -28,19 +28,19 @@
          <details class="header-link-list">
              <summary><%= image_tag current_user.image.url ,class:"header-profile-img" %></summary>
              <ul>
-                <li><a href="/inns/add">ルーム登録</a></li>
-                 <li><a href="/reserves">予約済みルーム一覧</a></li>
-                 <li><a href="/inns/registreted">登録済みルーム一覧</a></li>
-                 <li><a href="/users/account">設定</a></li>
-                 <li><a href="/users/sign_out">ログアウト</a></li>
+                <li><%= link_to "ルーム登録", "/inns/new" %></li>
+                <li><%= link_to "予約済みルーム一覧", "/reserves" %></li>
+                <li><%= link_to "登録済みルーム一覧", "/inns/registreted" %></li>
+                <li><%= link_to "設定", "/users/account" %></li>
+                <li><%= link_to "ログアウト", "/users/sign_out" %></li>
              </ul>
          </details>
       </div>
        <% else %>
        <!-- ユーザーがログインしていなかった時の処理 -->
          <div class="header-link-sign">
-            <div class="header-log-in"><a href="/users/sign_in">ログイン</a></div>
-            <div class="header-sign-up"><a href="/users/sign_up">登録する</a></div>
+            <div class="header-log-in"><%= link_to "ログイン", "/users/sign_in" %></div>
+            <div class="header-sign-up"><%= link_to "登録する", "/users/sign_up" %></div>
          </div>
        <% end %>
       </header>

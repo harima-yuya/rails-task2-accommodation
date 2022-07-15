@@ -2,7 +2,7 @@
  <h2>予約内容確認</h2>
       <span class="reserve-confirm-price">¥<%= @reserve.inn.innPrice %> / 日</span>
 
-      <%= form_for @reserve, method: :post, url: reserves_complete_path do |form| %> 
+      <%= form_with  model: @reserve, url: reserves_complete_path do |form| %> 
           <div  style="display:none"><%= form.text_field :inn_id %></div>
           <label for="start_date">開始日</label><br>
           <%= form.date_field :start_date, :readonly => true, id:"start_date" %><br> 

@@ -1,6 +1,7 @@
 class InnsController < ApplicationController
 
   layout "application"
+  before_action :authenticate_user!, except: [:index, :search]
 
   def index
   end
@@ -19,7 +20,7 @@ class InnsController < ApplicationController
   
   end
 
-  def add
+  def new
     @inn = Inn.new
   end
 

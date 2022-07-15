@@ -6,7 +6,7 @@
     </div>
     <div class="layout1-main add-main">
         <h3>ルーム情報登録</h3>
-        <%= form_for(@inn, url:{controller:"inns", action:"create"}) do |form| %> 
+        <%= form_with model:@inn, url:{controller:"inns", action:"create"} do |form| %> 
             <div class="layout1-item form-group">
                 <label for="innName">ルーム名</label>
                 <%= form.text_field :innName, placeholder:"ルーム名を入力" %>
