@@ -38,16 +38,15 @@
       </div>
        <% else %>
        <!-- ユーザーがログインしていなかった時の処理 -->
-       <div class="header-link-sign">
+         <div class="header-link-sign">
             <div class="header-log-in"><a href="/users/sign_in">ログイン</a></div>
             <div class="header-sign-up"><a href="/users/sign_up">登録する</a></div>
-       </div>
-       
+         </div>
        <% end %>
-
+      </header>
       
-    </header>
       <%= yield %>
+
     <footer><small>&copy; 2020 POTEPAN.INC.</small></footer>
   </body>
 </html>

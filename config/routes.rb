@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "inns/delete/:id", to: "inns#delete"
   get 'inns/add'
   post "inns/add", to: "inns#create"
+  get 'inns/registreted'
   get 'inns/:id', to: "inns#show"
   
   get 'reserves/index'

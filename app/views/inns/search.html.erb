@@ -5,7 +5,7 @@
         <% @inns.each do |obj|%>
           <div class="search-result-item">
            <span class="search-result-image"><%= image_tag obj.innImage.url%></sapn>
-           <span class="search-sresult-name"><%= obj.innName %></span>
+           <span class="search-sresult-name"><a href="/inns/<%= obj.id %>"><%= obj.innName %></a></span>
            <span class="search-sresult-area"><%= obj.innArea %></span>
            <span class="search-sresult-price">¥<%= obj.innPrice %></span>
           </div>
