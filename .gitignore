@@ -33,5 +33,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/public/uplods/*
+/public/uploads
 .DS_Store
