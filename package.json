@@ -1,5 +1,5 @@
 {
-  "name": "task_app",
+  "name": "TripApp",
   "private": true,
   "dependencies": {
     "@rails/ujs": "^6.0.0",

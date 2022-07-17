@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaskApp</title>
+    <title>TripApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "trip", "data-turbo-track": "reload" %>
+  
+    <!--Font Awere-->
+     <script src="https://kit.fontawesome.com/63c63b3c5f.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <%= yield %>
+ <body>
+    <header>
+      <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png" ), "/inns" %>
+      <%= search_form_for @search, class:"header-search", url: inns_search_path do |f| %>
+         <div class="header-search-form-area"><%= f.search_field :innArea_cont ,placeholder:"エリア" %></div>
+         <div class="header-search-form-name"><%= f.search_field :innName_cont ,placeholder:"キーワード" %></div>
+      <%= f.submit %>
+      <% end %>
+    
+      <% if user_signed_in? %>  <!-- ユーザーがログインしているか調べる -->
+        <!-- ユーザーがログインしていた時の処理 -->
+        <div class="header-profile">
+         <p class="header-profile-name"><%= current_user.name %></p>
+         <details class="header-link-list">
+             <summary><%= image_tag current_user.image.url ,class:"header-profile-img" %></summary>
+             <ul>
+                <li><%= link_to "ルーム登録", "/inns/new" %></li>
+                <li><%= link_to "予約済みルーム一覧", "/reserves" %></li>
+                <li><%= link_to "登録済みルーム一覧", "/inns/registreted" %></li>
+                <li><%= link_to "設定", "/users/account" %></li>
+                <li><%= link_to "ログアウト", "/users/sign_out" %></li>
+             </ul>
+         </details>
+      </div>
+       <% else %>
+       <!-- ユーザーがログインしていなかった時の処理 -->
+         <div class="header-link-sign">
+            <div class="header-log-in"><%= link_to "ログイン", "/users/sign_in" %></div>
+            <div class="header-sign-up"><%= link_to "登録する", "/users/sign_up" %></div>
+         </div>
+       <% end %>
+      </header>
+      
+      <%= yield %>
+
+    <footer><small>&copy; 2020 POTEPAN.INC.</small></footer>
   </body>
 </html>
+

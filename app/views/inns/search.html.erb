@@ -1,0 +1,15 @@
+<div class="search-result-container">
+   <p class="search-result-quantitiy">検索結果：<%= @inns.all.count %>件</p>
+   <div class="search-result-list">
+      <% @search.present? %>
+        <% @inns.each do |obj|%>
+          <div class="search-result-item">
+           <span class="search-result-image"><%= image_tag obj.innImage.url%></sapn>
+           <span class="search-sresult-name"><a href="/inns/<%= obj.id %>"><%= obj.innName %></a></span>
+           <span class="search-sresult-area"><%= obj.innArea %></span>
+           <span class="search-sresult-price">¥<%= obj.innPrice %></span>
+          </div>
+        <% end %>
+      
+   </div>
+</div>

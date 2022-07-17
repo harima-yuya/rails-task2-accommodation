@@ -1,0 +1,29 @@
+<div class="reserve-confirm-container">
+ <h2>予約内容確認</h2>
+      <span class="reserve-confirm-price">¥<%= @reserve.inn.innPrice %> / 日</span>
+
+      <%= form_with  model: @reserve, url: reserves_complete_path do |form| %> 
+          <div  style="display:none"><%= form.text_field :inn_id %></div>
+          <label for="start_date">開始日</label><br>
+          <%= form.date_field :start_date, :readonly => true, id:"start_date" %><br> 
+          <label for="end_date"">終了日</label><br>
+          <%= form.date_field :end_date, :readonly => true, id:"end_date" %>
+		  <p>使用日数：<%= ((@reserve.end_date - @reserve.start_date)/86400).round  %>日</p>
+          <p class="reserve-confirm-guest_num">人数</label>：<%= @reserve.guest_num %>人</p>
+          <%= form.number_field :guest_num, class:"guest_num", style:"display:none" %>
+          <label for="price_sum">合計金額</label><br>
+          <%= form.number_field :price_sum, :readonly => true %>
+		  <p>上記内容でよろしければ「予約を確定」を押してください</p>
+          <%= form.submit '予約を確定' , class:"btn reserve-confirm-btn" %>
+       <% end %>
+
+        <%= form_with model:@reserve, url: reserves_back_path do |form| %>
+     	 <%= form.hidden_field :inn_id %>
+	     <%= form.hidden_field :start_date %>
+         <%= form.hidden_field :end_date %>
+         <%= form.hidden_field :guest_num %>
+    	 <%= form.hidden_field :price_sum %>
+	     <%= form.submit '入力画面に戻る',class:"btn reserve-confirm-back-btn" %>
+       <% end %>
+</div>
+

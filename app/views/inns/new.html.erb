@@ -1,0 +1,39 @@
+<div class="layout1-container add-container">
+    <div class="layout1-top add-top">
+        <div class=layout1-page-link>
+            <a href="/inns/add"><span class="current-page">基本情報</span></a>
+        </div>
+    </div>
+    <div class="layout1-main add-main">
+        <h3>ルーム情報登録</h3>
+        <%= form_with model:@inn, url:{controller:"inns", action:"create"} do |form| %> 
+            <div class="layout1-item form-group">
+                <label for="innName">ルーム名</label>
+                <%= form.text_field :innName, placeholder:"ルーム名を入力" %>
+            </div>
+
+            <div class="layout1-item form-group">
+                <label for="innMemo">ルーム紹介</label>
+                <%= form.text_area :innMemo, placeholder:"ルーム説明を入力" %>
+            </div>
+
+            <div class="layout1-item form-group">
+                <label for="innPrice">料金</label>
+                <%= form.text_field :innPrice, placeholder:"1日当たりの料金を入力" %>
+            </div>
+
+            <div class="layout1-item form-group">
+                <label for="innArea">住所</label>
+                <%= form.text_field :innArea, placeholder:"住所を入力" %>
+            </div>
+            <div class="layout1-item form-group">
+                <label for="innImage">画像</label><br>
+                <%= form.file_field :innImage %>
+                
+            </div>
+            <div class="layout1-item form-group">
+                 <%= form.submit "登録" ,class:"btn" %>
+            </div>
+        <% end %>
+    </div>
+</div>>

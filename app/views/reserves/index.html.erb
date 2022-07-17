@@ -1,0 +1,19 @@
+<div class="layout3-container registarated-room-container">
+<h2>登録済みルーム一覧</h2>
+    <table>
+        <tr>
+            <th>ルーム画像</th><th>ルーム名</th><th>ルーム紹介</th><th>料金</th><th>開始日</th><th>終了日</th><th>予約確定日時</th>
+        </tr>
+        <% @reserves.each do |obj| %>
+            <tr class="layout3-list registarated-list">
+                <td><%= image_tag obj.inn.innImage.url %></td>
+                <td><%= obj.inn.innName %></a></td>
+                <td><%= obj.inn.innMemo %></td>
+                <td>¥<%= obj.price_sum %></td>
+                <td><%= obj.start_date.strftime('%Y/%m/%d') %></td>
+                <td><%= obj.end_date.strftime('%Y/%m/%d') %></td>
+                <td><%= obj.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>   
+        <% end %>
+    </table>
+    
